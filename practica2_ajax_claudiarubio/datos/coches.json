@@ -1,0 +1,11 @@
+{
+  "coches":[
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/aston.png"},
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/corvette.png"},
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/delorean.png"},
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/dodge.png"},
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/ferrari.png"},
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/lamborghini.png"},
+    {"coche": "http://localhost/dashboard/AJAX/practica2_ajax_claudiarubio/galeria/volkswagen.png"}
+  ]
+}

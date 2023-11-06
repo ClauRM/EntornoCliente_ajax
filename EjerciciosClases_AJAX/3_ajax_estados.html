@@ -1,0 +1,53 @@
+<html>
+
+<head>
+
+</head>
+
+<body style="background-color: rgb(188, 194, 194);">
+
+    <form id="formulario">
+        <div id="contenido"></div>
+        <input type="text" id="texto">
+        <input type="button" id="boton" value="Inserta">
+
+    </form>
+
+
+    <script type="text/javascript" language="javascript">
+        var http_request = new XMLHttpRequest;
+
+        var contenido = document.getElementById("contenido");
+        var formulario = document.getElementById("formulario");
+        var boton = document.getElementById("boton");
+
+        http_request.open('GET', 'http://localhost/dashboard/images/gadtito.jpg', true);
+
+        http_request.addEventListener('load', function() {
+            console.info(http_request.status)
+            if (this.status >= 200 && this.status < 400) { //controlamos los estados de transmision de json
+                console.info("Éxito");
+            } else {
+                console.info("Error");
+            }
+
+        });
+
+
+
+        boton.addEventListener('click', function() {
+            //console.info(http_request.status) //https://developer.mozilla.org/es/docs/Web/HTTP/Status
+            if (http_request.status == 0) {
+                http_request.responseType = 'blob';
+                http_request.send();
+            }
+
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>

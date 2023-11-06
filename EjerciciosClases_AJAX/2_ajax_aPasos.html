@@ -1,0 +1,58 @@
+<html>
+
+<head>
+
+</head>
+
+<body style="background-color: rgb(188, 194, 194);">
+
+    <form id="formulario">
+        <div id="contenido"></div>
+
+        <input type="button" id="boton" value="Inserta">
+
+    </form>
+
+
+    <script type="text/javascript" language="javascript">
+        var http_request = new XMLHttpRequest;
+
+        var contenido = document.getElementById("contenido");
+        var formulario = document.getElementById("formulario");
+        var boton = document.getElementById("boton");
+
+        //con html
+        //http_request.open('GET', 'http://localhost/dashboard/howto.html', true);
+        //con json
+        http_request.open('GET', 'http://localhost/dashboard/AJAX/EjerciciosClases_AJAX/datos.json', true);
+        //con imagen
+        //http_request.open('GET', 'http://localhost/dashboard/images/gatito.jpg', true);
+
+        http_request.addEventListener('load', function() {
+            //con html
+            //contenido.innerHTML = http_request.responseText;
+            //con json
+            var datosJSON = JSON.parse(this.responseText);
+            contenido.innerHTML = datosJSON.nombre;
+            //con imagen
+            //const img = new Image();
+            //img.src = URL.createObjectURL(this.response);
+            //contenido.appendChild(img);
+        });
+
+        boton.addEventListener('click', function() {
+            //con html
+            //http_request.responseType = 'html';
+            //con json
+            http_request.responseType = 'JSON';
+            //con imagen
+            //http_request.responseType = 'blob' //responsetype: https://runebook.dev/es/docs/dom/xmlhttprequest/responsetype
+            http_request.send();
+
+        });
+    </script>
+
+
+</body>
+
+</html>

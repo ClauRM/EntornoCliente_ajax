@@ -1,0 +1,33 @@
+<selva>
+    <animal>
+        <nombre>Lik</nombre>
+        <tipo>Tigre</tipo>
+        <color>Amarillo y negro</color>
+        <edad>3</edad>
+    </animal>
+    <animal>
+        <nombre>Parrot</nombre>
+        <tipo>Loro</tipo>
+        <color>Rojo</color>
+        <edad>5</edad>
+    </animal>
+    <animal>
+        <nombre>Esniki</nombre>
+        <tipo>Serpiente</tipo>
+        
+        <edad>300</edad>
+    </animal>
+    <animal>
+        <nombre>Werthers</nombre>
+        <tipo>Pantera</tipo>
+        <color>Negro</color>
+        <edad>12</edad>
+        </animal>
+    <animal>
+        <nombre>Bun</nombre>
+        <tipo>León</tipo>
+        <color>Marrón</color>
+	<color>Naranja</color>
+        <edad>15</edad>
+    </animal>
+</selva>

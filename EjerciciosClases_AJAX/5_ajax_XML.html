@@ -1,0 +1,102 @@
+<html>
+
+<head>
+
+</head>
+
+<body style="background-color: rgb(188, 194, 194);">
+
+    <form id="formulario">
+        <div id="contenido"></div>
+    </form>
+
+    <script type="text/javascript" language="javascript">
+        var http_request = false;
+        var contenido = document.getElementById("contenido");
+
+        function makeRequest(url) {
+
+            http_request = false;
+
+            //tipo de motor de ajax
+            if (window.XMLHttpRequest) { // Mozilla, Safari,...
+                http_request = new XMLHttpRequest();
+                if (http_request.overrideMimeType) {
+                    http_request.overrideMimeType('text/xml');
+                    console.info("entra");
+                }
+            } else if (window.ActiveXObject) { // IE
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) { }
+                }
+            }
+
+            if (!http_request) {
+                alert('Falla :( No es posible crear una instancia XMLHTTP');
+                return false;
+            }
+            http_request.onreadystatechange = alertContents;
+            http_request.open('GET', url, true);
+            http_request.send();
+        }
+
+        function alertContents() {
+            //si se cumplen las dos condiciones necesarias
+            if (http_request.readyState == 4) {
+                if (http_request.status == 200) {
+                    muestraXML();
+                } else {
+                    alert(http_request.status);
+                    alert('Hubo problemas con la petición.');
+                }
+            }
+        }
+
+        function muestraXML() {
+
+            var tablaAnimales, datos, tipos, colores;
+
+            //construir algo que esta ya en formato xml
+            tablaAnimales = "<table border='1'><tr><th>TIPO</th><th>COLOR</th></tr>";
+
+            //como estamos leyendo esos datos xml que estan en el servidor
+            //del objeto http_request voy a coger lo que me ha enviado en formato xml, voy a buscar algo en concreto -> etiqueta
+            datos = http_request.responseXML.documentElement.getElementsByTagName("animal");
+            
+            //devuelve una coleccion de datos por lo que recorremos con un for
+            for (let i = 0; i < datos.length; i++) {
+                tablaAnimales = tablaAnimales + "<tr>";
+                tipos = datos[i].getElementsByTagName("tipo"); {
+                    try {
+                        tablaAnimales = tablaAnimales + "<td>" + tipos[0].firstChild.nodeValue + "</td>";
+                    } catch (er) {
+                        tablaAnimales = tablaAnimales + "<td>Sin tipo</td>";
+                    }
+                }
+                colores = datos[i].getElementsByTagName("color"); {
+                    try {
+                        tablaAnimales = tablaAnimales + "<td>" + colores[0].firstChild.nodeValue + "</td>";
+                    } catch (er) {
+                        tablaAnimales = tablaAnimales + "<td>Sin color</td>";
+                    }
+                }
+                tablaAnimales = tablaAnimales + "</tr>";
+            }
+            tablaAnimales = tablaAnimales + "</table>";
+
+            //finalmente, al elemento que tengo en el formulario le inyecto el codigo html que acabo de generar
+            document.getElementById('contenido').innerHTML = tablaAnimales;
+        }
+    </script>
+    <span style="cursor: pointer; text-decoration: underline"
+        onclick="makeRequest('http://localhost/dashboard/AJAX/EjerciciosClases_AJAX/animales.xml')">
+        Hacer una petición
+    </span>
+
+</body>
+
+</html>

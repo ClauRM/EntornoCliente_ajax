@@ -1,0 +1,67 @@
+<html>
+
+<head>
+
+</head>
+
+<body style="background-color: rgb(188, 194, 194);">
+
+    <script type="text/javascript" language="javascript">
+        var http_request = false;
+
+        //este metodo intenta montar un objeto de la clase XML o ActiveObject, 
+        //verifica cual de los motores esta activo chrome, mozilla, edge.. 
+        //en funcion de ello crea un objeto con todos sus elementos
+        function makeRequest(url) {
+
+            http_request = false;
+
+            if (window.XMLHttpRequest) { // Mozilla, Safari,...
+                http_request = new XMLHttpRequest();
+                if (http_request.overrideMimeType) {
+                    http_request.overrideMimeType('text/xml'); //con que tipo de informacion voy a trabajar
+                    console.info("entra");
+                }
+            } else if (window.ActiveXObject) { // IE
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) { }
+                }
+            }
+
+            //verificamos si se ha podido crear el objeto, si se usa un navegador diferente falla
+            if (!http_request) {
+                alert('Falla :( No es posible crear una instancia XMLHTTP');
+                return false;
+            }
+            http_request.onreadystatechange = alertContents; //comprueba si todo va correctamente 
+            http_request.open('GET', url, true); //abriremos mediante la opcion GET, archivo y parametro
+            http_request.send(); //enviamos esta peticion 
+
+        }
+
+        function alertContents() {
+
+            //en el momento de que se verifique que todo esta correctamente, se va a ejecutar el sgte codigo
+            if (http_request.readyState == 4) { //readyState codificacion de estados entre 1 y 4, documentacion de ajax
+                if (http_request.status == 200) { //status codificacion 200, verifica si se ha procesado
+                    alert(http_request.responseText); //si se cumplen las dos, ya tenemos el contenido procesado en el formato correspondiente responseText
+                } else {
+                    alert(http_request.status);
+                    alert('Hubo problemas con la petición.');
+                }
+            }
+
+        }
+    </script>
+    <span style="cursor: pointer; text-decoration: underline"
+        onclick="makeRequest('http://localhost/dashboard/AJAX/EjerciciosClases_AJAX/datos.xml')"><!--poner aquí la ruta de datos.xml-->
+        Hacer una petición
+    </span>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+body {
+    background-image: url("../galeria/fondo.jpg");
+    background-size: cover;/*para que cubra toda la pantalla*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+    text-align: center;
+}
+h1{
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+input{
+    margin-top: 50px;
+    cursor: pointer;
+}
+#boton{
+    color: aliceblue;
+    background: linear-gradient(to right, rgba(0, 0, 255, 0.395), rgb(118, 215, 239));
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+#contenedor {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;/*centrar horizontalmente*/
+}
+#contenedor img{
+    height: 100px;
+    width: 150px;
+    cursor: pointer;/*para que cambie cuando se pase sobre la imagen*/
+}
+
+#previa{
+    padding-top: 180px;
+    /*es el contenedor de la imagen en grande*/
+    background: rgba(0, 0, 0, 0.8);/*transparencia*/
+    display: none;/*que no se muestre al iniciar*/
+    height: 100%; 
+    width: 100%;
+    left: 0; /*posicionado en la esquina superior izquierda*/
+    top: 0;
+    position: fixed; /*posicion fija*/
+}
+
+#previa img{
+    /*para centrar la imagen en el div previa*/
+    margin: 30px auto;
+    width: 380px;
+}

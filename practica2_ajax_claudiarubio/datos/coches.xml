@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hotwheels>
+  <coche>
+    <nombre>Aston</nombre>
+    <descripcion>Hot Wheels Aston Martin Vantage DB5</descripcion>
+  </coche>
+  <coche>
+    <nombre>Corvette</nombre>
+    <descripcion>Hot Wheels Corvette de Chevrolet</descripcion>
+  </coche>
+  <coche>
+    <nombre>Delorean</nombre>
+    <descripcion>Hot Wheels DeLorean de regreso al Futuro - Marty MacFly</descripcion>
+  </coche>
+  <coche>
+    <nombre>Dodge</nombre>
+    <descripcion>Hot Wheels Dodge Camión Pickup Chevrolet Corvette de Ram Pickup</descripcion>
+  </coche>
+  <coche>
+    <nombre>Ferrari</nombre>
+    <descripcion>Hot Wheels Ferrari Spa del Enzo Ferrari Jeep</descripcion>
+  </coche>
+  <coche>
+    <nombre>Lamborghini</nombre>
+    <descripcion>Hot Wheels Lamborghini Sesto Aventador</descripcion>
+  </coche>
+  <coche>
+    <nombre>Volkswagen</nombre>
+    <descripcion>Hot Wheels Herbie Volkswagen Escarabajo</descripcion>
+  </coche>
+</hotwheels>
